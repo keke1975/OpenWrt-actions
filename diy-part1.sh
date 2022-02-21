@@ -19,12 +19,12 @@ echo 'src-git small8 https://github.com/kenzok8/small-package' >>feeds.conf.defa
 
 mkdir -p files/usr/share
 mkdir -p files/etc/
-touch files/etc/keke_version
+touch files/etc/lenyu_version
 mkdir wget
 touch wget/DISTRIB_REVISION1
 touch wget/DISTRIB_REVISION3
 touch files/usr/share/Check_Update.sh
-touch files/usr/share/keke-auto.sh
+touch files/usr/share/Lenyu-auto.sh
 
 
 cat>rename.sh<<-\EOF
@@ -39,7 +39,7 @@ rm -rf  bin/targets/x86/64/openwrt-x86-64-generic.manifest
 rm -rf bin/targets/x86/64/sha256sums
 rm -rf  bin/targets/x86/64/version.buildinfo
 sleep 2
-rename_version=`cat files/etc/keke_version`
+rename_version=`cat files/etc/lenyu_version`
 str1=`grep "KERNEL_PATCHVER:="  target/linux/x86/Makefile | cut -d = -f 2` #判断当前默认内核版本号如5.10
 ver414=`grep "LINUX_VERSION-4.14 ="  include/kernel-4.14 | cut -d . -f 3`
 ver419=`grep "LINUX_VERSION-4.19 ="  include/kernel-4.19 | cut -d . -f 3`
@@ -47,38 +47,38 @@ ver54=`grep "LINUX_VERSION-5.4 ="  include/kernel-5.4 | cut -d . -f 3`
 ver510=`grep "LINUX_VERSION-5.10 ="  include/kernel-5.10 | cut -d . -f 3`
 ver515=`grep "LINUX_VERSION-5.15 ="  include/kernel-5.15 | cut -d . -f 3`
 if [ "$str1" = "5.4" ];then
-   mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz       bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver54}_dev_keke.img.gz
-  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz   bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver54}_uefi-gpt_dev_keke.img.gz
+   mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz       bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver54}_dev_Lenyu.img.gz
+  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz   bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver54}_uefi-gpt_dev_Lenyu.img.gz
 elif [ "$str1" = "4.19" ];then
-  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz       bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver419}_dev_keke.img.gz
-  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz   bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver419}_uefi-gpt_dev_keke.img.gz
+  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz       bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver419}_dev_Lenyu.img.gz
+  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz   bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver419}_uefi-gpt_dev_Lenyu.img.gz
 elif [ "$str1" = "4.14" ];then
-  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz       bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver414}_dev_keke.img.gz
-  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz   bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver414}_uefi-gpt_dev_keke.img.gz
+  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz       bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver414}_dev_Lenyu.img.gz
+  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz   bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver414}_uefi-gpt_dev_Lenyu.img.gz
 elif [ "$str1" = "5.10" ];then
-   mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz       bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver510}_dev_keke.img.gz
-  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz   bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver510}_uefi-gpt_dev_keke.img.gz
+   mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz       bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver510}_dev_Lenyu.img.gz
+  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz   bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver510}_uefi-gpt_dev_Lenyu.img.gz
 elif [ "$str1" = "5.15" ];then
-   mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz       bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver515}_dev_keke.img.gz
-  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz   bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver515}_uefi-gpt_dev_keke.img.gz
+   mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined.img.gz       bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver515}_dev_Lenyu.img.gz
+  mv  bin/targets/x86/64/openwrt-x86-64-generic-squashfs-combined-efi.img.gz   bin/targets/x86/64/openwrt_x86-64-${rename_version}_${str1}.${ver515}_uefi-gpt_dev_Lenyu.img.gz
 fi
-ls bin/targets/x86/64 | grep "_keke.img" | cut -d - -f 3 | cut -d _ -f 1-2 > wget/op_version1
+ls bin/targets/x86/64 | grep "_Lenyu.img" | cut -d - -f 3 | cut -d _ -f 1-2 > wget/op_version1
 #md5
 ls -l  "bin/targets/x86/64" | awk -F " " '{print $9}' > wget/open_dev_md5
-dev_version=`grep "_uefi-gpt_dev_keke.img.gz" wget/open_dev_md5 | cut -d - -f 3 | cut -d _ -f 1-2`
-openwrt_dev=openwrt_x86-64-${dev_version}_dev_keke.img.gz
-openwrt_dev_uefi=openwrt_x86-64-${dev_version}_uefi-gpt_dev_keke.img.gz
+dev_version=`grep "_uefi-gpt_dev_Lenyu.img.gz" wget/open_dev_md5 | cut -d - -f 3 | cut -d _ -f 1-2`
+openwrt_dev=openwrt_x86-64-${dev_version}_dev_Lenyu.img.gz
+openwrt_dev_uefi=openwrt_x86-64-${dev_version}_uefi-gpt_dev_Lenyu.img.gz
 cd bin/targets/x86/64
 md5sum $openwrt_dev > openwrt_dev.md5
 md5sum $openwrt_dev_uefi > openwrt_dev_uefi.md5
 exit 0
 EOF
 
-cat>keke.sh<<-\EOOF
+cat>lenyu.sh<<-\EOOF
 #!/bin/bash
-keke_version="`date '+%y%m%d%H%M'`_dev_Len yu" 
-echo $keke_version >  wget/DISTRIB_REVISION1 
-echo $keke_version | cut -d _ -f 1 >  files/etc/keke_version  
+lenyu_version="`date '+%y%m%d%H%M'`_dev_Len yu" 
+echo $lenyu_version >  wget/DISTRIB_REVISION1 
+echo $lenyu_version | cut -d _ -f 1 >  files/etc/lenyu_version  
 #######
 new_DISTRIB_REVISION=`cat  wget/DISTRIB_REVISION1`
 grep "DISTRIB_REVISION="  package/lean/default-settings/files/zzz-default-settings | cut -d \' -f 2 >  wget/DISTRIB_REVISION3
@@ -89,15 +89,15 @@ grep "Check_Update.sh"  package/lean/default-settings/files/zzz-default-settings
 if [ $? != 0 ]; then
 	sed -i 's/exit 0/ /'  package/lean/default-settings/files/zzz-default-settings
 	cat>> package/lean/default-settings/files/zzz-default-settings<<-EOF
-	sed -i '$ a alias keke="bash /usr/share/Check_Update.sh"' /etc/profile
+	sed -i '$ a alias lenyu="bash /usr/share/Check_Update.sh"' /etc/profile
 	exit 0
 	EOF
 fi
-grep "keke-auto.sh"  package/lean/default-settings/files/zzz-default-settings
+grep "Lenyu-auto.sh"  package/lean/default-settings/files/zzz-default-settings
 if [ $? != 0 ]; then
 	sed -i 's/exit 0/ /'  package/lean/default-settings/files/zzz-default-settings
 	cat>> package/lean/default-settings/files/zzz-default-settings<<-EOF
-	sed -i '$ a alias keke-auto="bash /usr/share/keke-auto.sh"' /etc/profile
+	sed -i '$ a alias lenyu-auto="bash /usr/share/Lenyu-auto.sh"' /etc/profile
 	exit 0
 	EOF
 fi
@@ -105,48 +105,48 @@ EOOF
 
 cat>files/usr/share/Check_Update.sh<<-\EOF
 #!/bin/bash
-# https://github.com/keke1975/Actions-OpenWrt-x86
-# Actions-OpenWrt-x86 By keke 20210505
+# https://github.com/Lenyu2020/Actions-OpenWrt-x86
+# Actions-OpenWrt-x86 By Lenyu 20210505
 #path=$(dirname $(readlink -f $0))
 # cd ${path}
 #检测准备
-if [ ! -f  "/etc/keke_version" ]; then
+if [ ! -f  "/etc/lenyu_version" ]; then
 	echo
-	echo -e "\033[31m 该脚本在非keke固件上运行，为避免不必要的麻烦，准备退出… \033[0m"
+	echo -e "\033[31m 该脚本在非Lenyu固件上运行，为避免不必要的麻烦，准备退出… \033[0m"
 	echo
 	exit 0
 fi
 rm -f /tmp/cloud_version
 # 获取固件云端版本号、内核版本号信息
-current_version=`cat /etc/keke_version`
-wget -qO- -t1 -T2 "https://api.github.com/repos/keke2020/Actions-OpenWrt-x86/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g;s/v//g'  > /tmp/cloud_ts_version
+current_version=`cat /etc/lenyu_version`
+wget -qO- -t1 -T2 "https://api.github.com/repos/Lenyu2020/Actions-OpenWrt-x86/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g;s/v//g'  > /tmp/cloud_ts_version
 if [ -s  "/tmp/cloud_ts_version" ]; then
 	cloud_version=`cat /tmp/cloud_ts_version | cut -d _ -f 1`
 	cloud_kernel=`cat /tmp/cloud_ts_version | cut -d _ -f 2`
 	#固件下载地址
 	new_version=`cat /tmp/cloud_ts_version`
-	DEV_URL=https://github.com/keke1975/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_x86-64-${new_version}_dev_keke.img.gz
-	DEV_UEFI_URL=https://github.com/keke1975/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_x86-64-${new_version}_uefi-gpt_dev_keke.img.gz
-	openwrt_dev=https://github.com/keke1975/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_dev.md5
-	openwrt_dev_uefi=https://github.com/keke1975/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_dev_uefi.md5
+	DEV_URL=https://github.com/Lenyu2020/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_x86-64-${new_version}_dev_Lenyu.img.gz
+	DEV_UEFI_URL=https://github.com/Lenyu2020/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img.gz
+	openwrt_dev=https://github.com/Lenyu2020/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_dev.md5
+	openwrt_dev_uefi=https://github.com/Lenyu2020/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_dev_uefi.md5
 else
 	echo "请检测网络或重试！"
 	exit 1
 fi
 ####
 Firmware_Type="$(grep 'DISTRIB_ARCH=' /etc/openwrt_release | cut -d \' -f 2)"
-echo $Firmware_Type > /etc/keke_firmware_type
+echo $Firmware_Type > /etc/lenyu_firmware_type
 echo
 if [[ "$cloud_kernel" =~ "4.19" ]]; then
 	echo
-	echo -e "\033[31m 该脚本在keke固件Sta版本上运行，目前只建议在Dev版本上运行，准备退出… \033[0m"
+	echo -e "\033[31m 该脚本在Lenyu固件Sta版本上运行，目前只建议在Dev版本上运行，准备退出… \033[0m"
 	echo
 	exit 0
 fi
 #md5值验证，固件类型判断
 if [ ! -d /sys/firmware/efi ];then
 	if [ "$current_version" != "$cloud_version" ];then
-		wget -P /tmp "$DEV_URL" -O /tmp/openwrt_x86-64-${new_version}_dev_keke.img.gz
+		wget -P /tmp "$DEV_URL" -O /tmp/openwrt_x86-64-${new_version}_dev_Lenyu.img.gz
 		wget -P /tmp "$openwrt_dev" -O /tmp/openwrt_dev.md5
 		cd /tmp && md5sum -c openwrt_dev.md5
 		if [ $? != 0 ]; then
@@ -162,7 +162,7 @@ if [ ! -d /sys/firmware/efi ];then
 	fi
 else
 	if [ "$current_version" != "$cloud_version" ];then
-		wget -P /tmp "$DEV_UEFI_URL" -O /tmp/openwrt_x86-64-${new_version}_uefi-gpt_dev_keke.img.gz
+		wget -P /tmp "$DEV_UEFI_URL" -O /tmp/openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img.gz
 		wget -P /tmp "$openwrt_dev_uefi" -O /tmp/openwrt_dev_uefi.md5
 		cd /tmp && md5sum -c openwrt_dev_uefi.md5
 		if [ $? != 0 ]; then
@@ -191,11 +191,11 @@ case $num1 in
 	echo
 	sleep 3
 	if [ ! -d /sys/firmware/efi ];then
-		gzip -d openwrt_x86-64-${new_version}_dev_keke.img.gz
-		sysupgrade /tmp/openwrt_x86-64-${new_version}_dev_keke.img
+		gzip -d openwrt_x86-64-${new_version}_dev_Lenyu.img.gz
+		sysupgrade /tmp/openwrt_x86-64-${new_version}_dev_Lenyu.img
 	else
-		gzip -d openwrt_x86-64-${new_version}_uefi-gpt_dev_keke.img.gz
-		sysupgrade /tmp/openwrt_x86-64-${new_version}_uefi-gpt_dev_keke.img
+		gzip -d openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img.gz
+		sysupgrade /tmp/openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img
 	fi
     ;;
     n|N)
@@ -204,11 +204,11 @@ case $num1 in
     echo
     sleep 3
 	if [ ! -d /sys/firmware/efi ];then
-		gzip -d openwrt_x86-64-${new_version}_dev_keke.img.gz
-		sysupgrade -n  /tmp/openwrt_x86-64-${new_version}_dev_keke.img
+		gzip -d openwrt_x86-64-${new_version}_dev_Lenyu.img.gz
+		sysupgrade -n  /tmp/openwrt_x86-64-${new_version}_dev_Lenyu.img
 	else
-		gzip -d openwrt_x86-64-${new_version}_uefi-gpt_dev_keke.img.gz
-		sysupgrade -n  /tmp/openwrt_x86-64-${new_version}_uefi-gpt_dev_keke.img
+		gzip -d openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img.gz
+		sysupgrade -n  /tmp/openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img
 	fi
     ;;
     *)
@@ -249,50 +249,50 @@ open_op
 exit 0
 EOF
 
-cat>files/usr/share/keke-auto.sh<<-\EOF
+cat>files/usr/share/Lenyu-auto.sh<<-\EOF
 #!/bin/bash
-# https://github.com/keke1975/Actions-OpenWrt-x86
-# Actions-OpenWrt-x86 By keke 20210505
+# https://github.com/Lenyu2020/Actions-OpenWrt-x86
+# Actions-OpenWrt-x86 By Lenyu 20210505
 #path=$(dirname $(readlink -f $0))
 # cd ${path}
 #检测准备
-if [ ! -f  "/etc/keke_version" ]; then
+if [ ! -f  "/etc/lenyu_version" ]; then
 	echo
-	echo -e "\033[31m 该脚本在非keke固件上运行，为避免不必要的麻烦，准备退出… \033[0m"
+	echo -e "\033[31m 该脚本在非Lenyu固件上运行，为避免不必要的麻烦，准备退出… \033[0m"
 	echo
 	exit 0
 fi
 rm -f /tmp/cloud_version
 # 获取固件云端版本号、内核版本号信息
-current_version=`cat /etc/keke_version`
-wget -qO- -t1 -T2 "https://api.github.com/repos/keke2020/Actions-OpenWrt-x86/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g;s/v//g'  > /tmp/cloud_ts_version
+current_version=`cat /etc/lenyu_version`
+wget -qO- -t1 -T2 "https://api.github.com/repos/Lenyu2020/Actions-OpenWrt-x86/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g;s/v//g'  > /tmp/cloud_ts_version
 if [ -s  "/tmp/cloud_ts_version" ]; then
 	cloud_version=`cat /tmp/cloud_ts_version | cut -d _ -f 1`
 	cloud_kernel=`cat /tmp/cloud_ts_version | cut -d _ -f 2`
 	#固件下载地址
 	new_version=`cat /tmp/cloud_ts_version`
-	DEV_URL=https://github.com/keke1975/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_x86-64-${new_version}_dev_keke.img.gz
-	DEV_UEFI_URL=https://github.com/keke1975/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_x86-64-${new_version}_uefi-gpt_dev_keke.img.gz
-	openwrt_dev=https://github.com/keke1975/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_dev.md5
-	openwrt_dev_uefi=https://github.com/keke1975/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_dev_uefi.md5
+	DEV_URL=https://github.com/Lenyu2020/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_x86-64-${new_version}_dev_Lenyu.img.gz
+	DEV_UEFI_URL=https://github.com/Lenyu2020/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img.gz
+	openwrt_dev=https://github.com/Lenyu2020/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_dev.md5
+	openwrt_dev_uefi=https://github.com/Lenyu2020/Actions-OpenWrt-x86/releases/download/${new_version}/openwrt_dev_uefi.md5
 else
 	echo "请检测网络或重试！"
 	exit 1
 fi
 ####
 Firmware_Type="$(grep 'DISTRIB_ARCH=' /etc/openwrt_release | cut -d \' -f 2)"
-echo $Firmware_Type > /etc/keke_firmware_type
+echo $Firmware_Type > /etc/lenyu_firmware_type
 echo
 if [[ "$cloud_kernel" =~ "4.19" ]]; then
 	echo
-	echo -e "\033[31m 该脚本在keke固件Sta版本上运行，目前只建议在Dev版本上运行，准备退出… \033[0m"
+	echo -e "\033[31m 该脚本在Lenyu固件Sta版本上运行，目前只建议在Dev版本上运行，准备退出… \033[0m"
 	echo
 	exit 0
 fi
 #md5值验证，固件类型判断
 if [ ! -d /sys/firmware/efi ];then
 	if [ "$current_version" != "$cloud_version" ];then
-		wget -P /tmp "$DEV_URL" -O /tmp/openwrt_x86-64-${new_version}_dev_keke.img.gz
+		wget -P /tmp "$DEV_URL" -O /tmp/openwrt_x86-64-${new_version}_dev_Lenyu.img.gz
 		wget -P /tmp "$openwrt_dev" -O /tmp/openwrt_dev.md5
 		cd /tmp && md5sum -c openwrt_dev.md5
 		if [ $? != 0 ]; then
@@ -300,16 +300,16 @@ if [ ! -d /sys/firmware/efi ];then
 		  sleep 4
 		  exit
 		fi
-		gzip -d /tmp/openwrt_x86-64-${new_version}_dev_keke.img.gz
-		sysupgrade /tmp/openwrt_x86-64-${new_version}_dev_keke.img
+		gzip -d /tmp/openwrt_x86-64-${new_version}_dev_Lenyu.img.gz
+		sysupgrade /tmp/openwrt_x86-64-${new_version}_dev_Lenyu.img
 	else
-		echo -e "\033[32m 本地已经是最新版本，还是不要动了吧… \033[0m"
+		echo -e "\033[32m 本地已经是最新版本，还更个鸡巴毛啊… \033[0m"
 		echo
 		exit
 	fi
 else
 	if [ "$current_version" != "$cloud_version" ];then
-		wget -P /tmp "$DEV_UEFI_URL" -O /tmp/openwrt_x86-64-${new_version}_uefi-gpt_dev_keke.img.gz
+		wget -P /tmp "$DEV_UEFI_URL" -O /tmp/openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img.gz
 		wget -P /tmp "$openwrt_dev_uefi" -O /tmp/openwrt_dev_uefi.md5
 		cd /tmp && md5sum -c openwrt_dev_uefi.md5
 		if [ $? != 0 ]; then
@@ -317,10 +317,10 @@ else
 			sleep 1
 			exit
 		fi
-		gzip -d /tmp/openwrt_x86-64-${new_version}_uefi-gpt_dev_keke.img.gz
-		sysupgrade /tmp/openwrt_x86-64-${new_version}_uefi-gpt_dev_keke.img
+		gzip -d /tmp/openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img.gz
+		sysupgrade /tmp/openwrt_x86-64-${new_version}_uefi-gpt_dev_Lenyu.img
 	else
-		echo -e "\033[32m 本地已经是最新版本，还是不要动了吧… \033[0m"
+		echo -e "\033[32m 本地已经是最新版本，还更个鸡巴毛啊… \033[0m"
 		echo
 		exit
 	fi
